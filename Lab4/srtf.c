@@ -73,7 +73,12 @@ int partition(PCB P[], int low, int high, int iCriteria) {
         int compare = 0;
         if (iCriteria == SORT_BY_ARRIVAL) compare = P[j].iArrival < pivot.iArrival;
         else if (iCriteria == SORT_BY_PID) compare = P[j].iPID < pivot.iPID;
-        else if (iCriteria == SORT_BY_BURST) compare = P[j].iBurst < pivot.iBurst;
+        else if (iCriteria == SORT_BY_BURST) {
+            if (P[j].iBurst == pivot.iBurst)
+                compare = P[j].iArrival < pivot.iArrival;
+            else
+                compare = P[j].iBurst < pivot.iBurst;
+        }
         else if (iCriteria == SORT_BY_START) compare = P[j].iStart < pivot.iStart;
         if (compare) {
             i++;
