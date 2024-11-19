@@ -19,7 +19,6 @@ void* producer(void* arg) {
             count++;
         }
         printf("Producer: Count is %d\n", count);
-//        sleep(rand()/RAND_MAX);
         sem_post(&sem);
     }
 }
@@ -33,7 +32,6 @@ void* consumer(void* arg) {
         if (count > 0)
             count--;
         printf("Consumer: Count is %d\n", count);
-//        sleep(rand()/RAND_MAX);
         sem_post(&sem);
     }
 }
