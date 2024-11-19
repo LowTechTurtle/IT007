@@ -202,8 +202,6 @@ int main() {
     exportGanttChart(iGantt, ganttchart);
     quickSort(TerminatedArray, 0, iTerminated - 1, SORT_BY_PID);
 
-    printProcess(iTerminated, TerminatedArray);
-
     calculateAWT(iTerminated, TerminatedArray);
     calculateATaT(iTerminated, TerminatedArray);
     printf("\n");
