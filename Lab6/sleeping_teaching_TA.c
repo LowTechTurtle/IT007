@@ -28,7 +28,6 @@ bool TA_exit = false;
 
 typedef struct student_arg {
     int id;
-    int s_exit;
 } student_arg;
 
 //function for student thread
@@ -113,16 +112,11 @@ int main() {
     pthread_create(&TA, NULL, teacher_assistance, NULL);
     for (int i = 0; i < n; i++) {
         students_arg[i].id = i + 1;
-        students_arg[i].s_exit = 0;
         pthread_create(&students[i], NULL, student, &students_arg[i]);
     }
 
     sleep(20); // simulate office hours, after this TA will finish teaching the last student and go home.
     TA_exit = true;
-
-    for (int i = 0; i < n; i++) {
-        students_arg[i].s_exit = 1;
-    }
 
     pthread_join(TA, NULL);
 
